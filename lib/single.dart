@@ -62,73 +62,77 @@ class _SingleState extends State<Single> {
                           // mainAxisAlignment: MainAxisAlignment.start,
                           // crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // height: 50,
-                                  // width: 50,
-                                  // color: Colors.black,
-                                  child: Column(
-                                    children: [
-                                      Text("Pekerjaan:"),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    // height: 150,
-                                    // width: MediaQuery.of(context).size.width,
-                                    color: Colors.red,
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // height: 50,
+                                    // width: 50,
+                                    // color: Colors.black,
                                     child: Column(
                                       children: [
-                                        Text(
-                                          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque reprehenderit quasi esse, at, voluptate numquam ullam debitis et, quo amet tenetur beatae. Sunt perspiciatis illum eos veritatis reprehenderit minus at.",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontFamily: "Open Sans",
-                                          ),
-                                        ),
+                                        Text("Pekerjaan:"),
                                       ],
                                     ),
                                   ),
-                                )
-                              ],
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                      // height: 150,
+                                      // width: MediaQuery.of(context).size.width,
+                                      color: Colors.red,
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque reprehenderit quasi esse, at, voluptate numquam ullam debitis et, quo amet tenetur beatae. Sunt perspiciatis illum eos veritatis reprehenderit minus at.",
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontFamily: "Open Sans",
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // height: 50,
-                                  // width: 50,
-                                  // color: Colors.black,
-                                  child: Column(
-                                    children: [
-                                      Text("Pekerjaan:"),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    // height: 150,
-                                    // width: MediaQuery.of(context).size.width,
-                                    color: Colors.red,
+                            Container(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    // height: 50,
+                                    // width: 50,
+                                    // color: Colors.black,
                                     child: Column(
                                       children: [
-                                        Text(
-                                          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque reprehenderit quasi esse, at, voluptate numquam ullam debitis et, quo amet tenetur beatae. Sunt perspiciatis illum eos veritatis reprehenderit minus at.",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontFamily: "Open Sans",
-                                          ),
-                                        ),
+                                        Text("Pekerjaan:"),
                                       ],
                                     ),
                                   ),
-                                )
-                              ],
+                                  Expanded(
+                                    flex: 1,
+                                    child: Container(
+                                      // height: 150,
+                                      // width: MediaQuery.of(context).size.width,
+                                      color: Colors.red,
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque reprehenderit quasi esse, at, voluptate numquam ullam debitis et, quo amet tenetur beatae. Sunt perspiciatis illum eos veritatis reprehenderit minus at.",
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontFamily: "Open Sans",
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ],
                         )),
