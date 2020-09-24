@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vote24/intro.dart';
 
-import 'main_screen.dart';
+// import 'main_screen.dart';
 
 class Utama extends StatefulWidget {
   @override
@@ -66,10 +67,8 @@ class _UtamaState extends State<Utama> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainScreen()));
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Intro()));
                       },
                       child: Container(
                         margin: EdgeInsets.only(bottom: 100),
