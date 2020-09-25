@@ -36,10 +36,106 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height / 1.8,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 1.7,
+                        right: 10,
+                      ),
+                      height: 65,
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50),
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height / 1.7,
+                      ),
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Lorem ipsum dolor sit amet consectetur,",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                      ),
+                      height: 65,
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50),
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 10,
+                      ),
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Lorem ipsum dolor sit amet consectetur,",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                      ),
+                      height: 65,
+                      width: MediaQuery.of(context).size.width / 2.5,
+                      decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(50),
+                            bottomRight: Radius.circular(50),
+                          )),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                        top: 10,
+                      ),
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            "Lorem ipsum dolor sit amet consectetur,",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
