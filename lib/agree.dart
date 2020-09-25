@@ -11,44 +11,34 @@ class _AgreeState extends State<Agree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.red,
       body: SafeArea(
         child: Container(
-          // decoration: BoxDecoration(
-          //     gradient: LinearGradient(
-          //   begin: Alignment.topCenter,
-          //   end: Alignment.bottomCenter,
-          //   colors: [
-          //     const Color.fromRGBO(255, 0, 0, 0.9),
-          //     const Color.fromRGBO(255, 255, 255, 0.9)
-          //   ],
-          // )),
           child: Center(
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  margin: EdgeInsets.only(top: 20),
+                  margin: EdgeInsets.only(top: 30),
                   width: 300,
                   height: 150,
-                  child: Expanded(
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 50,
-                          color: Colors.black54,
-                        ),
-                        Container(
-                          width: 50,
-                          color: Colors.orange,
-                        ),
-                      ],
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 5),
+                        width: 100,
+                        color: Colors.black54,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        width: 100,
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: EdgeInsets.only(top: 30),
                   padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   decoration: BoxDecoration(
                     color: Colors.red.withOpacity(0.5),
@@ -103,7 +93,7 @@ class _AgreeState extends State<Agree> {
                   child: Column(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(0, 85, 0, 10),
+                        margin: EdgeInsets.fromLTRB(0, 55, 0, 10),
                         height: 50,
                         width: 50,
                         decoration: BoxDecoration(

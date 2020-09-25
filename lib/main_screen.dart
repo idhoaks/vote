@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vote24/detailsreen.dart';
 import 'package:vote24/single.dart';
 
 class MainScreen extends StatefulWidget {
@@ -81,37 +82,45 @@ class _MainScreenState extends State<MainScreen> {
                 scrollDirection: Axis.horizontal,
                 itemCount: 5,
                 itemBuilder: (context, index) {
-                  return Stack(
-                    children: [
-                      Container(
-                        height: 250,
-                        width: 150,
-                        margin: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          children: <Widget>[
-                            Container(),
-                            Text(
-                              "Capres $index",
-                            ),
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 10,
-                        child: Container(
-                          height: 35,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailScreen()));
+                    },
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 250,
                           width: 150,
+                          margin: EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
                             color: Colors.red,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(),
+                              Text(
+                                "Capres $index",
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
+                        Positioned(
+                          bottom: 10,
+                          child: Container(
+                            height: 35,
+                            width: 150,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.red,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),
