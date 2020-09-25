@@ -35,6 +35,15 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ),
           ),
+          Column(
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height / 1.8,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
