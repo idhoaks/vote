@@ -185,7 +185,10 @@ class _Vote1State extends State<Vote1> {
                 //     itemCount: 4,
                 //   ),
                 // ),
-                ListView.builder(
+                GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
                   shrinkWrap: true,
                   itemCount: listCapres.length,
                   physics: ClampingScrollPhysics(),
@@ -200,17 +203,20 @@ class _Vote1State extends State<Vote1> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: Colors.grey, width: 2),
-                          ),
+                          color: Colors.red,
+                          // border: Border(
+                          //   bottom: BorderSide(color: Colors.grey, width: 2),
+                          // ),
                         ),
                         // color: Colors.redAccent,
-                        padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
-                        margin: EdgeInsets.only(top: 5, bottom: 5),
-                        child: Text(x.namaCalon,
-                            style: TextStyle(
-                              fontSize: 20,
-                            )),
+                        // padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                        margin: EdgeInsets.all(2),
+                        child: Center(
+                          child: Text(x.namaCalon,
+                              style: TextStyle(
+                                fontSize: 20,
+                              )),
+                        ),
                       ),
                     );
                   },
