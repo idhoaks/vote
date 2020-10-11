@@ -57,31 +57,31 @@ class _AgreeState extends State<Agree> {
                             child: Text(
                               "Aplikasi ini TIDAK BERAFILIASI dengan instansi, lembaga, organisasi, milik pemerintah dan atau partai politik manapun.",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontFamily: "Open Sans",
                                 color: Colors.white70,
                               ),
                               textAlign: TextAlign.justify,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           Container(
                             child: Text(
                               "Data di aplikasi ini tidak dapat dijadikan acuan resmi elektabilitas oleh partai politik atau calon yang berkepentingan atas usaha untuk kepemilikan kekuasaan.",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontFamily: "Open Sans",
                                 color: Colors.white70,
                               ),
                               textAlign: TextAlign.justify,
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           Container(
                             child: Text(
                               "Pembuat aplikasi bebas dari tuntutan apapun atas penyalahgunaan data informasi oleh pengguna.",
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                                 fontFamily: "Open Sans",
                                 color: Colors.white70,
                               ),

@@ -15,7 +15,7 @@ class _Vote1State extends State<Vote1> {
   @override
   void initState() {
     super.initState();
-    for (var i = 0; i < 20; i++) {
+    for (var i = 0; i < 24; i++) {
       var namacapresfaker = faker.person.firstName();
       listCapres.add(Calon1Model(namacapresfaker));
     }
@@ -170,12 +170,14 @@ class _Vote1State extends State<Vote1> {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.only(top: 10, bottom: 10),
-                  child: Text("Pilih Presiden",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      )),
+                  child: Text(
+                    "Pilih Presiden",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
+                  ),
                 ),
                 // Container(
                 //   child: GridView.builder(
@@ -203,7 +205,10 @@ class _Vote1State extends State<Vote1> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          image:
+                              DecorationImage(image: AssetImage("img/me.jpg")),
+                          // color: Colors.red,
+                          // borderRadius: BorderRadius.circular(200)
                           // border: Border(
                           //   bottom: BorderSide(color: Colors.grey, width: 2),
                           // ),
@@ -211,15 +216,67 @@ class _Vote1State extends State<Vote1> {
                         // color: Colors.redAccent,
                         // padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
                         margin: EdgeInsets.all(2),
-                        child: Center(
-                          child: Text(x.namaCalon,
-                              style: TextStyle(
-                                fontSize: 20,
-                              )),
-                        ),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                x.namaCalon,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white60,
+                                ),
+                              ),
+                            ]),
                       ),
                     );
                   },
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  // color: Colors.lightGreen,
+                  child: Text(
+                    "Pilihan Anda belum terdaftar?",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10, bottom: 10),
+                  color: Colors.lightGreen,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) => Vote2()));
+                        },
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Text(
+                                  "Tambahkan",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                child: Icon(Icons.add_circle, size: 30),
+                              ),
+                            ]),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

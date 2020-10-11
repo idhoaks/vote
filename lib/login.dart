@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:vote24/main_screen.dart';
 import 'package:vote24/model.dart';
 import 'package:faker/faker.dart';
 import 'package:vote24/vote1.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   @override
@@ -11,14 +14,32 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   List<KotaModel> listKota = [];
+  List<KotaModel> listKota1 = [];
+  List<KotaModel> listKota2 = [];
+  TextEditingController pencarian = TextEditingController();
+  Future _loadKota() async {
+    final response =
+        await http.get('http://192.168.43.205/vote2024_API/Vote/kota');
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body)['data'];
+      setState(() {
+        for (var i = 0; i < data.length; i++) {
+          listKota.add(KotaModel(data[i]['id_kota'], data[i]['nama_kota']));
+          listKota2.add(KotaModel(data[i]['id_kota'], data[i]['nama_kota']));
+        }
+        ;
+      });
+    }
+  }
+
   String kota = "Pilih Kota Domisili";
   @override
   void initState() {
     super.initState();
-    for (var i = 0; i < 100; i++) {
-      var namakotafaker = faker.address.city();
-      listKota.add(KotaModel(namakotafaker));
-    }
+    _loadKota();
+    pencarian.addListener(() {
+      filterSearch(pencarian.text.toUpperCase());
+    });
   }
 
   @override
@@ -202,12 +223,24 @@ class _LoginState extends State<Login> {
                         color: Colors.red,
                       )),
                 ),
+                Container(
+                  margin: EdgeInsets.only(left: 15, right: 15),
+                  child: TextFormField(
+                    controller: pencarian,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      hintText: 'Ketik nama kota',
+                    ),
+                  ),
+                ),
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: listKota.length,
+                  itemCount: listKota2.length,
                   physics: ClampingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    final x = listKota[index];
+                    final x = listKota2[index];
                     return GestureDetector(
                       onTap: () {
                         setState(() {
@@ -238,5 +271,27 @@ class _LoginState extends State<Login> {
         );
       },
     );
+  }
+
+  filterSearch(String query) {
+    listKota1.clear();
+    if (query.isNotEmpty) {
+      listKota.forEach((item) {
+        if (item.namaKota.contains(query)) {
+          listKota1.add(item);
+        }
+      });
+      setState(() {
+        listKota2.clear();
+        listKota2.addAll(listKota1);
+      });
+      print(query);
+      return;
+    } else {
+      setState(() {
+        listKota2.clear();
+        listKota2.addAll(listKota);
+      });
+    }
   }
 }
