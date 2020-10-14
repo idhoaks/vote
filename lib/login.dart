@@ -8,6 +8,8 @@ import 'package:vote24/pilihkota.dart';
 import 'package:vote24/vote1.dart';
 import 'package:http/http.dart' as http;
 
+import 'loading.dart';
+
 class Login extends StatefulWidget {
   String kota;
   Login({this.kota});

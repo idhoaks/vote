@@ -102,19 +102,35 @@ class _Vote1State extends State<Vote1> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(right: 5),
-                        height: 100,
-                        width: 75,
-                        color: Colors.blue,
-                        child: Image.asset("img/frame.png"),
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(right: 5),
+                            height: 100,
+                            width: 75,
+                            color: Colors.blue,
+                            child: Image.asset("img/frame.png"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            child: Text("RI 1"),
+                          ),
+                        ],
                       ),
-                      Container(
-                        margin: EdgeInsets.only(left: 5),
-                        height: 100,
-                        width: 75,
-                        color: Colors.blue,
-                        child: Image.asset("img/frame.png"),
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 5),
+                            height: 100,
+                            width: 75,
+                            color: Colors.blue,
+                            child: Image.asset("img/frame.png"),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 10),
+                            child: Text("RI 2"),
+                          ),
+                        ],
                       ),
                     ],
                   ),
