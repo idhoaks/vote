@@ -4,47 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:vote24/main_screen.dart';
 import 'package:vote24/model.dart';
 import 'package:faker/faker.dart';
+import 'package:vote24/pilihkota.dart';
 import 'package:vote24/vote1.dart';
 import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
+  String kota;
+  Login({this.kota});
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  List<KotaModel> listKota = [];
-  List<KotaModel> listKota1 = [];
-  List<KotaModel> listKota2 = [];
-  TextEditingController pencarian = TextEditingController();
-  Future _loadKota() async {
-    final response =
-        await http.get('http://192.168.43.205/vote2024_API/Vote/kota');
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body)['data'];
-      setState(() {
-        for (var i = 0; i < data.length; i++) {
-          listKota.add(KotaModel(data[i]['id_kota'], data[i]['nama_kota']));
-          listKota2.add(KotaModel(data[i]['id_kota'], data[i]['nama_kota']));
-        }
-        ;
-      });
-    }
-  }
-
-  String kota = "Pilih Kota Domisili";
-  @override
-  void initState() {
-    super.initState();
-    _loadKota();
-    pencarian.addListener(() {
-      filterSearch(pencarian.text.toUpperCase());
-    });
-  }
-
+  TextEditingController _namavoter = TextEditingController();
+  GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldkey,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -116,32 +93,10 @@ class _LoginState extends State<Login> {
                     height: 24.0,
                     // width: MediaQuery.of(context).size.width / 1.5,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black45),
-                      borderRadius: BorderRadius.circular(10),
-                      // color: Colors.green,
-                    ),
-                    width: MediaQuery.of(context).size.width / 1.5,
-                    height: 50,
-                    child: TextFormField(
-                      textCapitalization: TextCapitalization.words,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        // filled: true,
-                        icon: Icon(Icons.person),
-                        hintText: "Nama lengkap",
-                        // labelText: "Nama *",
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                    // width: MediaQuery.of(context).size.width / 1.5,
-                  ),
                   GestureDetector(
                     onTap: () {
-                      dialogPilihKota(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PilihKota()));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -158,16 +113,51 @@ class _LoginState extends State<Login> {
                           ),
                           Container(
                             margin: EdgeInsets.only(left: 15),
-                            child: Text(kota),
+                            child: Text(widget.kota == null
+                                ? "Silakan pilih kota"
+                                : widget.kota),
                           ),
                         ],
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 24.0,
+                    // width: MediaQuery.of(context).size.width / 1.5,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black45),
+                      borderRadius: BorderRadius.circular(10),
+                      // color: Colors.green,
+                    ),
+                    width: MediaQuery.of(context).size.width / 1.5,
+                    height: 50,
+                    child: TextFormField(
+                      textCapitalization: TextCapitalization.words,
+                      controller: _namavoter,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        // filled: true,
+                        icon: Icon(Icons.person),
+                        hintText: "Nama lengkap",
+                        // labelText: "Nama *",
+                      ),
+                    ),
+                  ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Vote1()));
+                      if (_namavoter.text == '') {
+                        snackbarerror();
+                      } else {
+                        if (widget.kota == null) {
+                          snackbarerror();
+                        }
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Vote1()));
+                        // print(_namavoter.text);
+                        // print(widget.kota);
+                      }
                     },
                     child: Column(
                       children: [
@@ -203,95 +193,16 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void dialogPilihKota(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10),
-                  child: Text("Pilih kota domisili",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      )),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 15, right: 15),
-                  child: TextFormField(
-                    controller: pencarian,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      hintText: 'Ketik nama kota',
-                    ),
-                  ),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: listKota2.length,
-                  physics: ClampingScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    final x = listKota2[index];
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          kota = x.namaKota;
-                          Navigator.pop(context);
-                        });
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: Colors.grey, width: 2),
-                          ),
-                        ),
-                        // color: Colors.redAccent,
-                        padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
-                        margin: EdgeInsets.only(top: 5, bottom: 5),
-                        child: Text(x.namaKota,
-                            style: TextStyle(
-                              fontSize: 20,
-                            )),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  filterSearch(String query) {
-    listKota1.clear();
-    if (query.isNotEmpty) {
-      listKota.forEach((item) {
-        if (item.namaKota.contains(query)) {
-          listKota1.add(item);
-        }
-      });
-      setState(() {
-        listKota2.clear();
-        listKota2.addAll(listKota1);
-      });
-      print(query);
-      return;
-    } else {
-      setState(() {
-        listKota2.clear();
-        listKota2.addAll(listKota);
-      });
-    }
+  void snackbarerror() {
+    _scaffoldkey.currentState.showSnackBar(SnackBar(
+      backgroundColor: Colors.red,
+      content: Text("Nama dan kota domisili harap diisi",
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: "Open Sans",
+            color: Colors.white60,
+          )),
+      duration: Duration(seconds: 2),
+    ));
   }
 }
